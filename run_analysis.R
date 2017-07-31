@@ -1,22 +1,22 @@
 library(dplyr)
 # extract test data 
-X_test <- read.table("./UCI_HAR_Dataset/test/X_test.txt") 
-Y_test <- read.table("./UCI_HAR_Dataset/test/Y_test.txt") 
-subject_test <- read.table("./UCI_HAR_Dataset/test/subject_test.txt") 
+X_test <- read.table("./UCI HAR Dataset/test/X_test.txt") 
+Y_test <- read.table("./UCI HAR Dataset/test/Y_test.txt") 
+subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt") 
 
 # extract train data 
-X_train <- read.table("./UCI_HAR_Dataset/train/X_train.txt") 
-Y_train <- read.table("./UCI_HAR_Dataset/train/Y_train.txt") 
-subject_train <- read.table("./UCI_HAR_Dataset/train/subject_train.txt")
+X_train <- read.table("./UCI HAR Dataset/train/X_train.txt") 
+Y_train <- read.table("./UCI HAR Dataset/train/Y_train.txt") 
+subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 
 # read activity labels 
-activity_labels <- read.table("./UCI_HAR_Dataset/activity_labels.txt") 
+activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt") 
 
 # extract variables from the features file 
-var <- read.table("./UCI_HAR_Dataset/features.txt") 
+var <- read.table("./UCI HAR Dataset/features.txt") 
 
 # read activity labels 
-activity_labels <- read.table("./UCI_HAR_Dataset/activity_labels.txt") 
+activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt") 
 
 # bind x data
 X_bound <- rbind(X_train, X_test)
@@ -44,7 +44,7 @@ colnames(X_bound) <- var[select_var[,1],2]
 colnames(Subject_bound) <- "subject" 
 All_Data <- cbind(X_bound, act_label, Subject_bound) 
 All_mean <- All_Data %>% group_by(act_label, subject) %>% summarise_all(funs(mean))
-write.table(All_mean, file = "./UCI_HAR_Dataset/tidydata.txt", row.names = FALSE, col.names = TRUE) 
+write.table(All_mean, file = "./UCI HAR Dataset/tidydata.txt", row.names = FALSE, col.names = TRUE) 
 
 
 
